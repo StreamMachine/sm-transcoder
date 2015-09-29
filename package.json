@@ -1,0 +1,37 @@
+{
+  "name": "sm-transcoder",
+  "version": "0.1.0",
+  "description": "On-the-fly preroll transcoding PoC with caching",
+  "main": "index.js",
+  "dependencies": {
+    "compute-cluster": "^0.0.9",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
+    "fluent-ffmpeg": "^2.0.1",
+    "lru-cache": "^2.7.0",
+    "request": "^2.63.0",
+    "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "coffee-script":          "~1.10.0",
+    "grunt":                  "^0.4.5",
+    "grunt-cli":              "^0.1.13",
+    "grunt-contrib-coffee":   "^0.12.0",
+    "grunt-contrib-copy":     "^0.8.0",
+    "grunt-mocha-test":       "^0.12.4"
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StreamMachine/sm-transcoder.git"
+  },
+  "author": "Eric Richardson <e@ewr.is>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StreamMachine/sm-transcoder/issues"
+  },
+  "homepage": "https://github.com/StreamMachine/sm-transcoder"
+}
