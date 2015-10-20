@@ -39,9 +39,12 @@ module.exports = WorkerPool = (function() {
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
       js = _ref[_i];
       p = path.join(__dirname, js);
-      if (fs.statSync(p)) {
+      try {
+        fs.statSync(p);
         worker = p;
         break;
+      } catch (_error) {
+
       }
     }
     this.cluster = new WorkerCluster({

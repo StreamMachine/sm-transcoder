@@ -18,9 +18,12 @@ module.exports = class WorkerPool
         worker = null
         for js in ["worker.js","worker_js.js"]
             p = path.join(__dirname,js)
-            if fs.statSync(p)
+            try
+                fs.statSync(p)
                 worker = p
                 break
+            catch
+                # no match...
 
         @cluster = new WorkerCluster
             module:         worker
