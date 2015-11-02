@@ -1,6 +1,6 @@
 {
   "name": "sm-transcoder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "On-the-fly preroll transcoding PoC with caching",
   "main": "index.js",
   "dependencies": {

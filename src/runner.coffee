@@ -20,6 +20,7 @@ module.exports = class Transcoder
         @server = express()
 
         @server.get "/", (req,res) =>
+            res.status(200).end "OK\n"
 
         @server.get "/encoding", (req,res) =>
             count = @count++

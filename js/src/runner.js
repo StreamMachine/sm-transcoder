@@ -20,7 +20,9 @@ module.exports = Transcoder = (function() {
     this.cache = new Cache();
     this.server = express();
     this.server.get("/", (function(_this) {
-      return function(req, res) {};
+      return function(req, res) {
+        return res.status(200).end("OK\n");
+      };
     })(this));
     this.server.get("/encoding", (function(_this) {
       return function(req, res) {
