@@ -36,15 +36,33 @@ module.exports = class StreamKeyOpts
                 # -c:a libfdk_aac|-b:a 192k|-f:a adts
                 @content_type = "audio/aac"
 
-                @opts.push "-f aac"
+                @opts.push "-f:a adts"
                 @opts.push "-c:a libfdk_aac"
 
                 # parts[1] is sample rate
                 @opts.push "-ar #{parts[1]}"
 
-                # parts[2] is profile
+                # parts[2] is bitrate
+                @opts.push "-b:a #{parts[2]}k"
 
                 # parts[3] is channels
+                channels = switch parts[3]
+                    when "2" then 2
+                    when "1" then 1
+
+                if !channels
+                    return cb "Invalid mp3 channel spec"
+
+                @opts.push "-ac #{channels}"
+
+                # parts[4] is profile AOT
+                profile = switch parts[4]
+                    when "2" then null
+                    when "5" then "aac_he"
+                    when "9" then "aac_he_v2"
+
+                if profile
+                    @opts.push "-profile:a #{profile}"
 
             else
                 return cb "Invalid stream key."
