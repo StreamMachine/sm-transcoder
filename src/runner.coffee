@@ -19,8 +19,10 @@ module.exports = class Transcoder
         # set up our server
         @server = express()
 
+        debug "Version is #{module.exports.version}"
+
         @server.get "/", (req,res) =>
-            res.status(200).end "OK\n"
+            res.status(200).end "sm-transcoder #{module.exports.version} OK\n"
 
         @server.get "/encoding", (req,res) =>
             count = @count++
@@ -61,6 +63,8 @@ module.exports = class Transcoder
 
         s = @server.listen @config.port
         debug "Transcoder listening on port #{s.address().port}"
+
+pkginfo = require('pkginfo')(module,'version')
 
 t = new Transcoder(require("yargs")
     .usage("Usage: $0 --port 3333")

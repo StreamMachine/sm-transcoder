@@ -1,4 +1,4 @@
-var Cache, StreamKeyOpts, Transcoder, WorkerPool, debug, express, t,
+var Cache, StreamKeyOpts, Transcoder, WorkerPool, debug, express, pkginfo, t,
   __slice = [].slice;
 
 express = require("express");
@@ -19,9 +19,10 @@ module.exports = Transcoder = (function() {
     this.pool = WorkerPool.shared();
     this.cache = new Cache();
     this.server = express();
+    debug("Version is " + module.exports.version);
     this.server.get("/", (function(_this) {
       return function(req, res) {
-        return res.status(200).end("OK\n");
+        return res.status(200).end("sm-transcoder " + module.exports.version + " OK\n");
       };
     })(this));
     this.server.get("/encoding", (function(_this) {
@@ -70,6 +71,8 @@ module.exports = Transcoder = (function() {
   return Transcoder;
 
 })();
+
+pkginfo = require('pkginfo')(module, 'version');
 
 t = new Transcoder(require("yargs").usage("Usage: $0 --port 3333").describe({
   port: "Port"

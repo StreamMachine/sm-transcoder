@@ -35,6 +35,9 @@ Output = (function(_super) {
       if (res && this._pos < this.length) {
 
       } else {
+        if (this._pos === this.length) {
+          this.push(null);
+        }
         break;
       }
     }

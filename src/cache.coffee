@@ -23,6 +23,7 @@ class Output extends require("stream").Readable
             if res && @_pos < @length
                 # loop again
             else
+                @push null if @_pos == @length
                 break
 
 #----------
